@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AgentTrust OS is the open-source flight recorder and preflight safety checklist for AI agents.">
+    <meta property="og:title" content="AgentTrust OS">
+    <meta property="og:description" content="Inspect AI agent tools, permissions, approval rules, and trust reports before deployment.">
+    <meta property="og:image" content="assets/agenttrust-report-preview.png">
+    <meta name="theme-color" content="#0f172a">
+    <title>AgentTrust OS</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="AgentTrust OS home">
+        <span class="brand-mark">AT</span>
+        <span>AgentTrust OS</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#roadmap">Roadmap</a>
+        <a class="nav-button" href="https://github.com/aredwan-xyz/agenttrust-os">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Open-source agent safety tooling</p>
+          <h1>The flight recorder and preflight checklist for AI agents.</h1>
+          <p class="hero-text">
+            AgentTrust OS scans an agent manifest, maps tools and permissions, checks human approval rules, and generates a trust report before an AI agent touches real business systems.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="https://github.com/aredwan-xyz/agenttrust-os">View on GitHub</a>
+            <a class="button secondary" href="https://github.com/aredwan-xyz/agenttrust-os/blob/main/reports/trust-report.md">See Sample Report</a>
+          </div>
+          <div class="terminal" aria-label="AgentTrust quick start command">
+            <span class="prompt">$</span>
+            <code>PYTHONPATH=src python3 -m agenttrust scan agenttrust.example.yaml</code>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="AgentTrust report preview">
+          <img src="assets/agenttrust-report-preview.png" alt="AgentTrust OS trust report preview showing risk score, passing checks, tool permissions, and scan command.">
+        </div>
+      </section>
+
+      <section class="proof-band" aria-label="Project proof points">
+        <div>
+          <strong>7/7</strong>
+          <span>manifest checks in the starter report</span>
+        </div>
+        <div>
+          <strong>0</strong>
+          <span>runtime dependencies for the first CLI</span>
+        </div>
+        <div>
+          <strong>MIT</strong>
+          <span>open-source license</span>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">How it works</p>
+          <h2>Make agent risk visible before launch.</h2>
+        </div>
+        <div class="steps">
+          <article>
+            <span class="step-number">01</span>
+            <h3>Declare the agent</h3>
+            <p>Use `agenttrust.yaml` to list tools, sensitive fields, data sources, approval rules, and blocked patterns.</p>
+          </article>
+          <article>
+            <span class="step-number">02</span>
+            <h3>Scan the permissions</h3>
+            <p>The CLI checks risky write tools, critical approvals, sensitive data declarations, and denied-action logging.</p>
+          </article>
+          <article>
+            <span class="step-number">03</span>
+            <h3>Share the report</h3>
+            <p>Generate a Markdown trust report that builders, clients, and reviewers can inspect without a cloud account.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="split-section">
+        <div>
+          <p class="eyebrow">Why it matters</p>
+          <h2>AI agents are starting to act, not just answer.</h2>
+          <p>
+            When an agent can send emails, update CRM records, read customer notes, or trigger automations, the hard question becomes: should this agent be allowed to act?
+          </p>
+          <p>
+            AgentTrust OS starts with a simple local workflow so teams can review capabilities, approvals, and sensitive data exposure before a workflow reaches production.
+          </p>
+        </div>
+        <div class="checklist" aria-label="AgentTrust checks">
+          <div><span>✓</span> Tool inventory</div>
+          <div><span>✓</span> Read/write permission map</div>
+          <div><span>✓</span> Critical action approval checks</div>
+          <div><span>✓</span> Sensitive data declarations</div>
+          <div><span>✓</span> Trust report export</div>
+        </div>
+      </section>
+
+      <section id="use-cases" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Use cases</p>
+          <h2>Built for agent builders who need trust artifacts.</h2>
+        </div>
+        <div class="use-cases">
+          <article>
+            <h3>AI agencies</h3>
+            <p>Show clients what an automation can access, what requires approval, and where risk remains.</p>
+          </article>
+          <article>
+            <h3>Startup teams</h3>
+            <p>Compare agent versions and keep a plain-English review artifact for internal launches.</p>
+          </article>
+          <article>
+            <h3>Security-minded developers</h3>
+            <p>Start reviewing prompt-injection, data access, and tool misuse risks before integrations expand.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="roadmap" class="section roadmap">
+        <div class="section-heading">
+          <p class="eyebrow">Roadmap</p>
+          <h2>From manifest scanner to agent replay.</h2>
+        </div>
+        <ol class="timeline">
+          <li><strong>v0.1</strong><span>Manifest scanner and Markdown trust report.</span></li>
+          <li><strong>v0.2</strong><span>Scenario runner for prompt injection, data leak, and approval bypass tests.</span></li>
+          <li><strong>v0.3</strong><span>Local dashboard and tool-call replay timeline.</span></li>
+          <li><strong>v0.4</strong><span>n8n, Dify, LangChain, and OpenAI Agents SDK adapters.</span></li>
+        </ol>
+      </section>
+
+      <section class="cta">
+        <div>
+          <p class="eyebrow">Try it locally</p>
+          <h2>Scan your first agent manifest in under a minute.</h2>
+        </div>
+        <a class="button primary" href="https://github.com/aredwan-xyz/agenttrust-os">Star and clone the repo</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Built by Abid Redwan / CodeBeez</span>
+      <a href="https://github.com/aredwan-xyz/agenttrust-os">GitHub</a>
+    </footer>
+  </body>
+</html>

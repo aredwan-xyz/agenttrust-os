@@ -1,6 +1,7 @@
 # AgentTrust OS
 
 [![CI](https://github.com/aredwan-xyz/agenttrust-os/actions/workflows/ci.yml/badge.svg)](https://github.com/aredwan-xyz/agenttrust-os/actions/workflows/ci.yml)
+[![Pages](https://github.com/aredwan-xyz/agenttrust-os/actions/workflows/pages.yml/badge.svg)](https://github.com/aredwan-xyz/agenttrust-os/actions/workflows/pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](pyproject.toml)
 
@@ -9,6 +10,8 @@ The open-source flight recorder and preflight safety checklist for AI agents.
 AgentTrust OS helps builders inspect AI agents before they touch real tools, private data, customers, CRMs, inboxes, calendars, files, payments, or production systems.
 
 > Run your agent through a trust check before it can send emails, update CRMs, access customer data, or act on behalf of a business.
+
+Website: https://aredwan-xyz.github.io/agenttrust-os/
 
 ## Start Here
 
