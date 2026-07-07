@@ -33,10 +33,12 @@ AgentTrust OS gives every agent a manifest, risk scan, adversarial test suite, t
 git clone https://github.com/aredwan-xyz/agenttrust-os.git
 cd agenttrust-os
 
-# v0.1 CLI coming next
+# Run from source without installing
+PYTHONPATH=src python3 -m agenttrust scan agenttrust.example.yaml
+
+# Or install the local CLI
+python3 -m pip install -e .
 agenttrust scan agenttrust.example.yaml
-agenttrust test examples/email-agent
-agenttrust report --format markdown
 ```
 
 ## Example Manifest

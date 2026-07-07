@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agenttrust-os"
+version = "0.1.0"
+description = "The open-source flight recorder and safety checklist for AI agents."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Abid Redwan" }
+]
+keywords = ["ai-agents", "agent-evals", "prompt-injection", "ai-safety", "automation"]
+dependencies = []
+
+[project.scripts]
+agenttrust = "agenttrust.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

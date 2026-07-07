@@ -2,10 +2,10 @@
 
 ## v0.1
 
-- Manifest scanner
-- Markdown trust report
-- Sample agent manifest
-- Sample scenario pack
+- Manifest scanner - done
+- Markdown trust report - done
+- Sample agent manifest - done
+- Sample scenario pack - started
 
 ## v0.2
 
