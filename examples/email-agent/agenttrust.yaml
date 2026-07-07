@@ -1,0 +1,46 @@
+agent:
+  name: "Client Email Agent"
+  owner: "CodeBeez"
+  description: "Classifies, drafts, and routes client email."
+  environment: "demo"
+
+tools:
+  - name: gmail.search
+    permission: read
+    risk: high
+    requires_approval: false
+  - name: gmail.draft
+    permission: write
+    risk: high
+    requires_approval: false
+  - name: gmail.send
+    permission: write
+    risk: critical
+    requires_approval: true
+  - name: hubspot.update_contact
+    permission: write
+    risk: high
+    requires_approval: true
+
+data:
+  sensitive_fields:
+    - email
+    - phone
+    - client_notes
+    - invoice_status
+  allowed_sources:
+    - inbox
+    - crm
+    - support_queue
+
+policies:
+  allow_external_send: false
+  log_denied_actions: true
+  require_human_approval_for:
+    - email_send
+    - payment_action
+    - crm_write
+  blocked_patterns:
+    - "ignore previous instructions"
+    - "send all contacts"
+    - "export private data"

@@ -1,12 +1,44 @@
 # AgentTrust OS
 
-The open-source flight recorder and safety checklist for AI agents.
+[![CI](https://github.com/aredwan-xyz/agenttrust-os/actions/workflows/ci.yml/badge.svg)](https://github.com/aredwan-xyz/agenttrust-os/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](pyproject.toml)
+
+The open-source flight recorder and preflight safety checklist for AI agents.
 
 AgentTrust OS helps builders inspect AI agents before they touch real tools, private data, customers, CRMs, inboxes, calendars, files, payments, or production systems.
 
+> Run your agent through a trust check before it can send emails, update CRMs, access customer data, or act on behalf of a business.
+
+## Start Here
+
+```bash
+git clone https://github.com/aredwan-xyz/agenttrust-os.git
+cd agenttrust-os
+PYTHONPATH=src python3 -m agenttrust scan agenttrust.example.yaml
+```
+
+That command generates:
+
+```text
+reports/trust-report.md
+```
+
+Sample output:
+
+```text
+Agent: Client Email Agent
+Overall Risk: High
+Checks: 7/7 passed
+```
+
+The risk stays high even when checks pass because this demo agent has critical write access. Passing controls do not erase the need for human approval, replay, and regression tests.
+
 ## Why
 
-AI agents are starting to act, not just answer. That means builders need more than a nice demo. They need to know:
+AI agents are moving from chat demos to real actions. They can draft emails, update CRMs, read documents, call APIs, create tickets, schedule meetings, and trigger automations.
+
+That means builders need answers before deployment:
 
 - what tools the agent can access
 - what data it can see
@@ -16,16 +48,31 @@ AI agents are starting to act, not just answer. That means builders need more th
 - what the agent actually did during a run
 - how to replay and explain failures
 
-AgentTrust OS gives every agent a manifest, risk scan, adversarial test suite, tool-call timeline, and exportable trust report.
+AgentTrust OS gives every agent a manifest, risk scan, adversarial test path, tool-call timeline, and exportable trust report.
 
-## What It Does
+## What Works Today
 
 - Scans an `agenttrust.yaml` manifest
 - Maps tools, data access, approval rules, and risky permissions
-- Runs prompt-injection, data-leak, tool-misuse, and approval-bypass scenarios
-- Records tool calls and agent actions
 - Generates a trust report with pass/fail checks and recommended fixes
-- Provides a local dashboard for replaying agent behavior
+- Runs with zero runtime dependencies
+- Includes starter prompt-injection and approval-bypass scenario files
+
+## Coming Next
+
+- `agenttrust test` for scenario execution
+- Tool-call replay timeline
+- HTML report export
+- n8n, Dify, LangChain, and OpenAI Agents SDK adapters
+- GitHub Action for agent trust checks
+
+## Who It Is For
+
+- AI automation agencies shipping client workflows
+- developers building agents with tool access
+- founders comparing agent versions before launch
+- teams adding human approval gates
+- educators teaching responsible AI automation
 
 ## Quick Demo
 
@@ -40,6 +87,11 @@ PYTHONPATH=src python3 -m agenttrust scan agenttrust.example.yaml
 python3 -m pip install -e .
 agenttrust scan agenttrust.example.yaml
 ```
+
+Open the generated report:
+
+- [reports/trust-report.md](reports/trust-report.md)
+- [reports/sample-report.md](reports/sample-report.md)
 
 ## Example Manifest
 
@@ -85,17 +137,16 @@ Agent: Client Email Agent
 Overall Risk: High
 
 Checks:
-- Manifest present: PASS
+- Agent identity declared: PASS
+- Tools declared: PASS
 - Critical write tools require approval: PASS
 - Sensitive fields declared: PASS
-- Prompt-injection scenario: FAIL
-- Data exfiltration scenario: PASS
-- Approval bypass scenario: FAIL
+- Human approval policy declared: PASS
+- Prompt-injection blocked patterns declared: PASS
+- Denied actions are logged: PASS
 
 Recommended fixes:
-1. Add refusal rule for external-send requests.
-2. Block CRM write actions unless approved by a human.
-3. Log every attempted write action, including denied actions.
+1. Add scenario tests next: prompt injection, data leak, and approval bypass.
 ```
 
 ## Architecture
@@ -111,6 +162,32 @@ flowchart LR
   G --> H["Trust Report"]
   G --> I["Dashboard"]
 ```
+
+## Why This Is Different
+
+Most AI agent tools help you build more capable agents. AgentTrust OS focuses on the uncomfortable question that appears right after capability:
+
+> Should this agent be allowed to act?
+
+The first release is intentionally simple:
+
+- manifest first
+- local first
+- readable reports
+- explicit permissions
+- human approval checks
+- useful without cloud setup
+
+## Example Use Case
+
+A client email agent can read inbox messages, draft replies, and update CRM records. AgentTrust OS makes the permissions visible before launch:
+
+| Tool | Permission | Risk | Approval |
+|---|---|---|---|
+| `gmail.search` | read | high | no |
+| `gmail.draft` | write | high | no |
+| `gmail.send` | write | critical | yes |
+| `hubspot.update_contact` | write | high | yes |
 
 ## Roadmap
 
@@ -129,20 +206,25 @@ flowchart LR
 - founders comparing agent versions
 - educators teaching responsible AI automation
 
+## Contribute
+
+The fastest way to help:
+
+- add a scenario file in `scenarios/`
+- add an example agent in `examples/`
+- improve report checks in `src/agenttrust/report.py`
+- build an adapter for n8n, Dify, LangChain, or OpenAI Agents SDK
+- improve the trust report format
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/good-first-issues.md](docs/good-first-issues.md).
+
+## Launch Kit
+
+Want to share the project? Use [docs/launch-kit.md](docs/launch-kit.md).
+
 ## What This Is Not
 
 AgentTrust OS is not a guarantee that an AI system is safe, secure, compliant, or medically/legally reliable. It is a practical development and review tool that helps builders find risks earlier, document behavior, and add human approval gates where they matter.
-
-## Contributing
-
-Useful first contributions:
-
-- Add a new attack scenario
-- Improve the risk scoring model
-- Add a sample agent
-- Add an adapter for a popular agent framework
-- Improve report design
-- Add documentation examples
 
 ## License
 
