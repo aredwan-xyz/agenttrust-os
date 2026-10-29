@@ -1,6 +1,6 @@
 # Architecture
 
-AgentTrust OS has five initial layers.
+This is the target architecture. The current implementation reads a manifest, evaluates its declarations and writes a Markdown report. It does not execute agents or record runtime behavior.
 
 ## 1. Manifest Scanner
 
@@ -14,7 +14,7 @@ Reads `agenttrust.yaml` and extracts:
 - blocked patterns
 - declared data sources
 
-## 2. Scenario Runner
+## 2. Scenario Runner (planned)
 
 Runs repeatable safety and reliability scenarios against an agent or mock agent.
 
@@ -27,7 +27,7 @@ Initial scenario categories:
 - hallucinated action
 - unsafe autonomy
 
-## 3. Tool-Call Recorder
+## 3. Tool-Call Recorder (planned)
 
 Captures a timeline of requested and completed tool calls:
 
@@ -40,13 +40,13 @@ Captures a timeline of requested and completed tool calls:
 
 ## 4. Risk Analyzer
 
-Combines manifest data, scenario results, and tool-call logs into a practical trust score.
+Today, evaluates manifest declarations for missing controls and risky permissions. Combining actual scenario results and tool-call logs is planned.
 
 The first version should prioritize explainability over perfect scoring.
 
 ## 5. Trust Report
 
-Exports findings as Markdown or HTML:
+Today, exports manifest findings as Markdown. HTML export, failed runtime scenarios and replay are planned:
 
 - overall risk
 - pass/fail checks

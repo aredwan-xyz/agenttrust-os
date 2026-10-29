@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](pyproject.toml)
 
-The open-source flight recorder and preflight safety checklist for AI agents.
+A local manifest scanner and preflight checklist for AI-agent projects.
 
 AgentTrust OS helps builders inspect AI agents before they touch real tools, private data, customers, CRMs, inboxes, calendars, files, payments, or production systems.
 
@@ -51,7 +51,7 @@ That means builders need answers before deployment:
 - what the agent actually did during a run
 - how to replay and explain failures
 
-AgentTrust OS gives every agent a manifest, risk scan, adversarial test path, tool-call timeline, and exportable trust report.
+The current CLI checks declarations in an agent manifest and exports a Markdown risk report. It does not execute the agent or verify that its declared controls are enforced. Scenario execution, tool-call recording and replay are roadmap features.
 
 ## What Works Today
 
@@ -152,7 +152,9 @@ Recommended fixes:
 1. Add scenario tests next: prompt injection, data leak, and approval bypass.
 ```
 
-## Architecture
+## Planned architecture
+
+The diagram includes future components. Today, only the manifest scanner, declaration-based risk analysis and Markdown report are implemented.
 
 ```mermaid
 flowchart LR
