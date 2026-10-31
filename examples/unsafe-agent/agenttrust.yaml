@@ -1,0 +1,25 @@
+agent:
+  name: "Autopilot Sales Agent"
+  owner: "Demo"
+  description: "Reads the inbox and sends replies and payments with no human in the loop."
+  environment: "production"
+
+tools:
+  - name: gmail.search
+    permission: read
+    risk: high
+    requires_approval: false
+  - name: gmail.send
+    permission: write
+    risk: critical
+    requires_approval: false
+  - name: stripe.refund
+    permission: write
+    risk: critical
+    requires_approval: false
+
+data:
+  sensitive_fields: []
+
+policies:
+  allow_external_send: true

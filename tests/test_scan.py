@@ -34,6 +34,17 @@ policies:
         self.assertEqual(manifest["data"]["sensitive_fields"], ["email"])
 
 
+    def test_inline_empty_list_is_empty(self) -> None:
+        manifest = parse_simple_yaml(
+            """
+data:
+  sensitive_fields: []
+"""
+        )
+
+        self.assertEqual(manifest["data"]["sensitive_fields"], [])
+
+
 class ScanCommandTests(unittest.TestCase):
     def test_scan_writes_report(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

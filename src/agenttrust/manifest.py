@@ -115,6 +115,10 @@ def parse_scalar(value: str) -> Any:
         return False
     if stripped in {"null", "None"}:
         return None
+    if stripped == "[]":
+        return []
+    if stripped == "{}":
+        return {}
     if (
         len(stripped) >= 2
         and stripped[0] == stripped[-1]

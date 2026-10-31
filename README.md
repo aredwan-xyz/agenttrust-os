@@ -37,6 +37,21 @@ Checks: 7/7 passed
 
 The risk stays high even when checks pass because this demo agent has critical write access. Passing controls do not erase the need for human approval, replay, and regression tests.
 
+## See It Say No
+
+A careful agent passes. A reckless one fails, and the command exits non-zero so it can gate CI:
+
+```bash
+PYTHONPATH=src python3 -m agenttrust scan examples/unsafe-agent/agenttrust.yaml
+```
+
+```text
+Overall risk: Critical
+Checks: 2/7 passed
+```
+
+Full output: [reports/unsafe-agent-report.md](reports/unsafe-agent-report.md).
+
 ## Why
 
 AI agents are moving from chat demos to real actions. They can draft emails, update CRMs, read documents, call APIs, create tickets, schedule meetings, and trigger automations.
